@@ -31,10 +31,20 @@ void displayCanvas()
         printf("\n");
     }
 }
+void drawHorizontalLine(int row, int startCol, int endCol)
+{
+    int i;
+
+    for(i = startCol; i <= endCol; i++)
+    {
+        canvas[row][i] = '*';
+    }
+}
 
 int main()
 {
     initCanvas();
+    drawHorizontalLine(5, 10, 20);
     displayCanvas();
 
     return 0;
