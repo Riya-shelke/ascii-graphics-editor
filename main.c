@@ -65,11 +65,33 @@ void drawRectangle(int row, int col, int width, int height)
                      row,
                      row + height - 1);
 }
+void drawTriangle(int row, int col, int height)
+{
+    int i;
+
+    /* Left side */
+    for(i = 0; i < height; i++)
+    {
+        canvas[row + i][col - i] = '*';
+    }
+
+    /* Right side */
+    for(i = 0; i < height; i++)
+    {
+        canvas[row + i][col + i] = '*';
+    }
+
+    /* Base */
+    drawHorizontalLine(row + height - 1,
+                       col - (height - 1),
+                       col + (height - 1));
+}
 
 int main()
 {
     initCanvas();
-    drawRectangle(5, 10, 15, 6);
+  //  drawRectangle(5, 10, 15, 6);
+    drawTriangle(15, 20, 5);
     displayCanvas();
 
     return 0;
