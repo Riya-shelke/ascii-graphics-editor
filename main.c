@@ -101,7 +101,18 @@ void drawCircle(int centerRow, int centerCol, int radius)
         }
     }
 }
+void clearArea(int row, int col, int width, int height)
+{
+    int i, j;
 
+    for(i = row; i < row + height; i++)
+    {
+        for(j = col; j < col + width; j++)
+        {
+            canvas[i][j] = '_';
+        }
+    }
+}
  int main()
 {
     int choice;
@@ -117,7 +128,8 @@ void drawCircle(int centerRow, int centerCol, int radius)
         printf("4. Draw Circle\n");
         printf("5. Display Canvas\n");
         printf("6. Clear Canvas\n");
-        printf("7. Exit\n");
+        printf("7. Clear Area\n");
+        printf("8. Exit\n");
 
         printf("Enter Choice: ");
         scanf("%d", &choice);
@@ -125,24 +137,83 @@ void drawCircle(int centerRow, int centerCol, int radius)
         switch(choice)
         {
             case 1:
-                drawHorizontalLine(5, 10, 20);
+            {
+                int row, startCol, endCol;
+
+                printf("Enter Row: ");
+                scanf("%d", &row);
+
+                printf("Enter Start Column: ");
+                scanf("%d", &startCol);
+
+                printf("Enter End Column: ");
+                scanf("%d", &endCol);
+
+                drawHorizontalLine(row, startCol, endCol);
+
                 printf("Line Added\n");
                 break;
+            }
 
             case 2:
-                drawRectangle(2, 2, 12, 5);
+            {
+                int row, col, width, height;
+
+                printf("Enter Row: ");
+                scanf("%d", &row);
+
+                printf("Enter Column: ");
+                scanf("%d", &col);
+
+                printf("Enter Width: ");
+                scanf("%d", &width);
+
+                printf("Enter Height: ");
+                scanf("%d", &height);
+
+                drawRectangle(row, col, width, height);
+
                 printf("Rectangle Added\n");
                 break;
+            }
 
             case 3:
-                drawTriangle(15, 20, 5);
+            {
+                int row, col, height;
+
+                printf("Enter Top Row: ");
+                scanf("%d", &row);
+
+                printf("Enter Center Column: ");
+                scanf("%d", &col);
+
+                printf("Enter Height: ");
+                scanf("%d", &height);
+
+                drawTriangle(row, col, height);
+
                 printf("Triangle Added\n");
                 break;
+            }
 
             case 4:
-                drawCircle(10, 20, 3);
+            {
+                int row, col, radius;
+
+                printf("Enter Center Row: ");
+                scanf("%d", &row);
+
+                printf("Enter Center Column: ");
+                scanf("%d", &col);
+
+                printf("Enter Radius: ");
+                scanf("%d", &radius);
+
+                drawCircle(row, col, radius);
+
                 printf("Circle Added\n");
                 break;
+            }
 
             case 5:
                 displayCanvas();
@@ -154,6 +225,28 @@ void drawCircle(int centerRow, int centerCol, int radius)
                 break;
 
             case 7:
+            {
+                int row, col, width, height;
+
+                printf("Enter Row: ");
+                scanf("%d", &row);
+
+                printf("Enter Column: ");
+                scanf("%d", &col);
+
+                printf("Enter Width: ");
+                scanf("%d", &width);
+
+                printf("Enter Height: ");
+                scanf("%d", &height);
+
+                clearArea(row, col, width, height);
+
+                printf("Area Cleared\n");
+                break;
+            }
+
+            case 8:
                 return 0;
 
             default:
